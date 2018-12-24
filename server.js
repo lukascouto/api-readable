@@ -1,6 +1,9 @@
+require('dotenv').config()
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const config = require('./config')
 const categories = require('./categories')
 const posts = require('./posts')
 const comments = require('./comments')
@@ -311,4 +314,6 @@ app.delete('/comments/:id', (req, res) => {
       )
 })
 
-app.listen(3000);
+app.listen(config.port, () => {
+  console.log('Server listening on port %s, Ctrl+C to stop', config.port)
+})
